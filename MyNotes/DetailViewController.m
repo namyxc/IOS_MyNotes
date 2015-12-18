@@ -25,14 +25,53 @@
     // Update the user interface for the detail item.
     if (self.activeNote) {
         self.contentTextView.text = self.activeNote.contentText;
+        self.title = self.activeNote.subject;
     }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    UIBarButtonItem *toolsButton = [[UIBarButtonItem alloc] initWithTitle:@"Tools" style:UIBarButtonItemStylePlain target:self action:@selector(toolsButtonTapped)];
+    self.navigationItem.rightBarButtonItem = toolsButton;
     [self configureView];
 }
+-(void)toolsButtonTapped{
+    
+    __weak DetailViewController *welf = self;
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Tools" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Rename" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [welf renameTapped];
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        //todo
+    }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
+
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+-(void) renameTapped{
+    
+    __weak DetailViewController *welf = self;
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Rename" message:@"rename" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.text = welf.activeNote.subject;
+    }];
+    
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //todo
+    }]];
+    
+    
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
+
+    
+    [self presentViewController:alertController animated:YES completion:nil];}
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
