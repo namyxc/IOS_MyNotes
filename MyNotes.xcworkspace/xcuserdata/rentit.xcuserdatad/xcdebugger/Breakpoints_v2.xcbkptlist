@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyNotes/DetailViewController.m"
-            timestampString = "472140571.582636"
+            timestampString = "472140874.30675"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-viewWillDisappear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyNotes/DetailViewController.m"
-            timestampString = "472140571.582636"
+            timestampString = "472140874.30675"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "-viewWillDisappear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MyNotes/DetailViewController.m"
-            timestampString = "472140571.582636"
+            timestampString = "472140874.30675"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "-viewWillDisappear:"
             landmarkType = "5">
          </BreakpointContent>

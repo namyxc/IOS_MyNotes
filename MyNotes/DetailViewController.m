@@ -32,14 +32,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIBarButtonItem *toolsButton = [[UIBarButtonItem alloc] initWithTitle:@"Tools" style:UIBarButtonItemStylePlain target:self action:@selector(toolsButtonTapped)];
+    UIBarButtonItem *toolsButton = [[UIBarButtonItem alloc] initWithTitle:@"Tools" style:UIBarButtonItemStylePlain target:self action:@selector(toolsButtonTapped:)];
     self.navigationItem.rightBarButtonItem = toolsButton;
     [self configureView];
 }
--(void)toolsButtonTapped{
+-(void)toolsButtonTapped:(UIBarButtonItem *) sender{
     
     __weak DetailViewController *welf = self;
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Tools" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Tools" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    alertController.popoverPresentationController.barButtonItem = sender;
+    
     [alertController addAction:[UIAlertAction actionWithTitle:@"Rename" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [welf renameTapped];
     }]];
