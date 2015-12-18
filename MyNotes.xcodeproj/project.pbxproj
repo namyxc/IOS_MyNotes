@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		850F575EDA60EBA3FC03CA7D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B6BE43888BBCE28523BE03 /* libPods.a */; };
+		8A3AEEF31C2431FD008D04AE /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3AEEF21C2431FD008D04AE /* Note.m */; };
 		8AE91DC41C242D3C001C52CB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE91DC31C242D3C001C52CB /* main.m */; };
 		8AE91DC71C242D3C001C52CB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE91DC61C242D3C001C52CB /* AppDelegate.m */; };
 		8AE91DCA1C242D3C001C52CB /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE91DC91C242D3C001C52CB /* MasterViewController.m */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A3AEEF11C2431FD008D04AE /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		8A3AEEF21C2431FD008D04AE /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		8AE91DBF1C242D3C001C52CB /* MyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AE91DC31C242D3C001C52CB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8AE91DC51C242D3C001C52CB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -79,6 +82,8 @@
 		8AE91DC11C242D3C001C52CB /* MyNotes */ = {
 			isa = PBXGroup;
 			children = (
+				8A3AEEF11C2431FD008D04AE /* Note.h */,
+				8A3AEEF21C2431FD008D04AE /* Note.m */,
 				8AE91DC51C242D3C001C52CB /* AppDelegate.h */,
 				8AE91DC61C242D3C001C52CB /* AppDelegate.m */,
 				8AE91DC81C242D3C001C52CB /* MasterViewController.h */,
@@ -233,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A3AEEF31C2431FD008D04AE /* Note.m in Sources */,
 				8AE91DC71C242D3C001C52CB /* AppDelegate.m in Sources */,
 				8AE91DCA1C242D3C001C52CB /* MasterViewController.m in Sources */,
 				8AE91DC41C242D3C001C52CB /* main.m in Sources */,
