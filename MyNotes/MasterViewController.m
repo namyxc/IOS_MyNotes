@@ -32,6 +32,11 @@
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     [self refreshData];
+    
+    __weak MasterViewController *welf = self;
+    [[NSNotificationCenter defaultCenter] addObserverForName:kNoteChangedNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        [welf refreshData];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

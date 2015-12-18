@@ -8,6 +8,8 @@
 
 #import <Realm/Realm.h>
 
+#define kNoteChangedNotification @"kNoteChangedNotification"
+
 @interface Note : RLMObject
 
 @property NSString *contentText;

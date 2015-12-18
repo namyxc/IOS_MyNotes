@@ -8,8 +8,9 @@
 
 #import "DetailViewController.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property (nonatomic, strong) NSString *editedSubject;
 
 @end
 
@@ -47,7 +48,16 @@
         [welf renameTapped];
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        //todo
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [realm deleteObject:welf.activeNote];
+        [realm commitWriteTransaction];
+        
+        [welf sendNoteChangedNotification];
+        welf.activeNote = nil;
+        
+        welf.contentTextView.text = @"";
+        welf.title = nil;
     }]];
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
@@ -56,17 +66,31 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+-(void) sendNoteChangedNotification{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNoteChangedNotification object:self.activeNote];
+}
+
 -(void) renameTapped{
     
     __weak DetailViewController *welf = self;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Rename" message:@"rename" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.text = welf.activeNote.subject;
+        textField.delegate = welf;
     }];
     
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //todo
+        
+        
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        welf.activeNote.subject = welf.editedSubject;
+        [realm commitWriteTransaction];
+        [welf configureView];
+        [welf sendNoteChangedNotification];
+        
+
     }]];
     
     
@@ -76,14 +100,20 @@
     
     [self presentViewController:alertController animated:YES completion:nil];}
 
+-(void) textFieldDidEndEditing:(UITextField *)textField{
+    self.editedSubject = textField.text;
+}
+
+
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     
-    
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    [realm beginWriteTransaction];
-    self.activeNote.contentText = self.contentTextView.text;
-    [realm commitWriteTransaction];
+    if (self.activeNote) {
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        self.activeNote.contentText = self.contentTextView.text;
+        [realm commitWriteTransaction];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
